@@ -1,0 +1,37 @@
+<스프링 DB 접근 기술>
+1. 순수 jdbc
+- build.gradle 파일의 depemdencies에 jdbc, h2 데이터베이스 관련 라이브러리 추가
+'''
+implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+runtimeOnly 'com.h2database:h2'
+'''
+
+*** 자바는 기본적으로 데이터베이스를 활용하기 위해서는 jdbc 드라이버가 꼭 필요하다.
+
+
+- 스프링 부트 데이터베이스 연결 설정 추가
+resources/application.properties에 경로와 드라이버 이름 추가
+'''
+spring.datasource.url=jdbc:h2:tcp://localhost/~/test
+spring.datasource.driver-class-name=org.h2.Driver
+'''
+
+- MemberRepository 인터페이스의 구현체 교체
+기존 MemoryMemberRepository클래스에서 JdbcMemberRepository로 교체
+마찬가지로 저장소가 바뀔경우 구현체를 교체해주면 된다.
+
+- DataSource
+데이터베이스에 접근하려면 DataSource(Javax.sql.DataSource)가 필요
+DataSource는 데이터베이스 커넥션을 획득할 때 사용하는 객체다. 스프링 부트는 
+데이터베이스 커넥션 정보를 바탕으로 DataSource를 생성하고 스프링 빈으로 
+만들어둔다. 그래서 DI를 받을 수 있다.
+
+*** 메모리 저장 방식에서 데이터베이스 저장 방식으로 바꾸면서 스프링을 사용하는 
+이유를 생각해보자
+	스프링의 DI방식을 사용하면 저장 방식에 변경이 발생하였지만 기존 코드를
+	전혀 손대지 않고, 설정만으로 구현 클래스를 변경 할 수 있다. 
+	(개방-폐쇄 원칙<OCP> 확장에는 열려있고, 수정/변경에는 닫혀있다.)
+
+
+
+	
