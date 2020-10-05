@@ -82,13 +82,34 @@ implementation 'org.springframework.boot:spring-boot-starter-data-jpa' 라이브
 - Service 계층에 @Transactional 어노테이션을 붙여줘야 한다.
 
 
+4. 스프링 데이터 JPA
+- 스프링 부트와 JPA 기반위에, 스프링 데이터 JPA라는 프레임워크를 사용하는것
+- 스프링 데이터 JPA를 사용하면, 기존의 한계를 넘어 리포지토리의 구현 클래스 없이 인터페이스 만으로 개발을 완료할 수 있다.
+- 기본 CRUD 기능을 스프링 데이터 JPA가 모두 제공한다.
+- 스프링 데이터 JPA가 JpaRepository를 상속받은 인터페이스를 보고 자동으로 스프링 빈에 등록한다.
+  SpringConfig 설정에서 등록된 빈을 주입받아 사용한다.
+- 실무에서는 JPA와 스프링 데이터 JPA를 기본으로 사요하고, 복잡한 동적 쿼리는 Querydsl이라는 라이버러리를 사용한다.
+
+- 스프링 데이터 JPA 리포지토리
+1) 인터페이스로 리포지토리를 생성한다.
+2) JpaRepository를 상속받고 <도메인클래스, pk키>를 입력한다.
+  예)
+   public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Long>, MemberRepository {
+
+       @Override
+       Optional<Member> findByName(String name);
+   }
+3) SpringCofig 설정 수정
+  스프링 데이터 JPA에 상속받은 리포지 토리를 주입받는다. 
+  서비스에 해당 리포지토리 객체를 주입한다.
+
 
 
 
 *** JPQL
 JPQL은 SQL과 비슷한 문법을 가진 객체지향쿼리다.
 
-JPQL의 탄생 배경은 JPA에서 제공하는 메서드 호출만으로 섬세한 커리 작성이 어렵다는 것에 있다.
+JPQL의 탄생 배경은 JPA에서 제공하는 메서드 호출만으로 섬세한 쿼리 작성이 어렵다는 것에 있다.
 EntityManager 객체의 find() 메서드를 호출하여 SELECT 쿼리를 수행 할 수도 있다. 하지만 find() 메서드는 식별자를 통해서만 데이터 조회를 하며, 조건문도 없고
 모든 칼럼을 조히하는 메서드이다. 이것만 가지고는 조금이라도 복잡한 검색을 수행할 수 없다. 따라서 여러 조건을 통해 검색을 하는 방법이 필요했고 그래서 JPQL이 개발됨.
 
