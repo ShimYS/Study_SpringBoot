@@ -1,0 +1,2 @@
+Lombok을 사용할 경우 
+Settings - Compiler - Annotation Processors에서 Enable annotation processing을 활성해 해줘야 한다.

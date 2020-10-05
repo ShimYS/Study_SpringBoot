@@ -1,0 +1,16 @@
+SpringBoot 
+Project : Gradle Project
+Language : Java
+Spring Boot : 2.1.17
+Project Metadata
+	Group : jpabook
+	Artifact : jpashop
+	name : jpashop
+Packaging : Jar
+Java : 11
+Dependencies
+	Spring Web
+	Thymeleaf
+	Spring Data JPA
+	H2 Database
+	Lombok - Getter/Setter를 간단한 어노테이션으로 생성해주는 역할
