@@ -1,0 +1,36 @@
+AOP
+- Aspect Oriented Programming(관점 지향 프로그래밍)
+- 공통 관심 사항(cross-cuttinf concern) vs 핵심 관심 사항(core concern) 분리
+(즉, 공통 관심 사항을 따로 분리해서 생성하고 원하는 곳에 적용하는 기술이다)
+
+AOP가 필요한 상황
+- 모든 메소드의 호출 시간을 측정하고 싶다면?
+- 공통 관심 사항(cross-cutting concern) vs 핵심 관심 사항(core concern)
+- 회원 가입 시간, 회원 조회 시간을 측정하고 싶다면?
+'해결 해야 할 문제'
+- 시간을 측정하는 기능은 핵심 관심 사항이 아니다.
+- 시간을 측정하는 로직과 핵심 비지니스의 로직이 섞여서 유지보수가 어렵다.
+- 시간을 측정하는 로직을 별도의 공통 로직으로 만들기 매우 어렵다.
+- 시간을 측정하는 로직을 변경할 때 모든 로직을 찾아가면서 변경해야 한다.
+
+- AOP 적용
+1. 공통 관심 사항 클래스를 생성
+2. 해당 클래스에 @Aspect 어노테이션을 붙인다.
+3. 해당 클래스에 @Component를 붙이거나 또는 Config클래스에 @Bean을 붙여서 스프링 빈 생성되도록 한다.
+4. 공통 관심 사항 클래스의 메소드를 만들고 @Around("execute(적용할 대상)") 어노테이션을 붙여준다.
+
+
+AOP를 적요한 상황
+'해결'
+- 핵심 관심 사항과 시간을 측적하는 공통 관심 사항을 분리
+- 시간을 측정하는 로직을 별도의 공통 로직으로 만듬
+- 핵심 관심 사항을 깔끔하게 유지할 수 있다.
+- 변경이 필요하면 aop를 적용한 로직만 변경하면 된다.
+- 원하는 적용 대상을 선택할 수 있다.
+
+AOP 동작 방식
+기존 : Controller -> Service
+AOP : Controller -> 프록시 Service -> 실제 Service
+
+기존 : Controller -> Service -> Repository
+AOP : 프록시 Controller -> 실제 Controller -> 프록시 Service -> 실제 Service -> 프록시 Repository -> 실제 Repository
