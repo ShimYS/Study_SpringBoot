@@ -14,3 +14,4 @@ Dependencies
 	Spring Data JPA
 	H2 Database
 	Lombok - Getter/Setter를 간단한 어노테이션으로 생성해주는 역할
+	Devtools - 코드 수정 후 해당 클래스를 Recompile하면 서버 재시작 없이 랜더링 할 수 있다.

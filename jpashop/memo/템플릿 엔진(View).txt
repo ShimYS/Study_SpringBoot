@@ -1,0 +1,17 @@
+*** 종류
+JSP, Thymeleaf, Apache Freemaker, Mustache, Groovy Templates 등이 있다.
+
+*** 권장
+스프링은 Thymeleaf를 권장한다.
+장점
+- html의 마크업을 깨지 않고 그대로 사용할 수 있다. 다른 엔진은 if 같은게 들어가고 마크업이 깨진다.??
+- 웹브라우저에서 그대로 열린다.
+단점
+- 버전2에서 태그를 정확히 안닫아주면 문제가 많았지만 버전3부터는 문제없어짐
+
+*** 요즘은 서버쪽에서 랜더링하기 보다는 React, View를 활용하는게 대세이다.
+
+- Thymeleaf -
+- 스프링 부트 thymeleaf viewName 매핑
+    (default) resources:templates/ +{ViewName}+ .html
+    (prefix, suffix를 수정해서 바꿀 수 있음)

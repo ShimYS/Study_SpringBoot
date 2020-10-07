@@ -1,2 +1,32 @@
 스프링부트 플러그인
 - 라이브러리들에 대한 의존성까지 관리를해준다.(버전까지) 따라서 스프링부트 플로그인만 올리면 다른 라이브러리까지 올라간다.
+
+
+영속성
+- 같은 영속성 컨텍스트 안에서는 id값이 같으면 같은 Entity이다.
+예시) 아래의 코드에서 findMember와 member는 동일한 Entity이다.
+    @Test
+    @Transactional
+    //@Rollback(false)
+    public void testMember() throws Exception {
+        //given
+        Member member = new Member();
+        member.setName("memberA");
+        // when
+        Long savedId = memberRepository.save(member);
+        Member findMember = memberRepository.find(savedId);
+        // then
+        Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
+        Assertions.assertThat(findMember.getName()).isEqualTo(member.getName());
+        Assertions.assertThat(findMember).isEqualTo(member);
+    }
+
+
+스프링부트가 지원하는/하지않는 라이브러리
+- 왠만한 라이브러리들은 스프링부트가 적합한 버전을 설정해두었기 때문에 라이브러리를 추가할때 버전을 입력하지 않아도 된다.
+만약 스프링부트가 지원하지 않는 라이브러리라면 추가시 버전을 기입해야 한다.
+예시)
+    지원하는 라이브러리
+        implementation 'org.springframework.boot:spring-boot-devtools'
+    지원하지 않는 라이브러리
+        implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'

@@ -1,0 +1,5 @@
+Lombok을 사용할 경우 
+Settings - Compiler - Annotation Processors에서 Enable annotation processing을 활성해 해줘야 한다.
+
+Terminal 설정(intellij내부 cmd를 git bash로 교체)
+Settings - Terminal - 경로를 "C:\Program Files\Git\bin\sh.exe" -login -i 로 바꾼다.

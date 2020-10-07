@@ -1,0 +1,4 @@
+1. 해당 파일로 이동
+2. ./gradlew clean build
+3. cd build -> cd libs
+4. java -jar '파일이름'

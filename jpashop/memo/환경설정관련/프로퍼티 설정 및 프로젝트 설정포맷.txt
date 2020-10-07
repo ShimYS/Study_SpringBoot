@@ -1,0 +1,25 @@
+타 시스템 간에 데이터를 주고 받을 때 데이터 포맷에 대한 약속이 필요하다.
+그러한 포맷이 xml, json, yml 등과 같이 있다.
+
+[ yml ]
+- application.yml같은 yml 파일은 띄어쓰기(스페이스) 2칸으로 계층을 만든다. 따라서 띄어쓰기 2칸을 필수로 적어야 한다.
+  spring:
+    datasource:
+      url: jdbc:h2:tcp://localhost/~/jpashop;MVCC=TRUE
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: create	=> 애플리케이션 실행 시점에 내가 가진 정보를 다 지우고 다시 생성한다.
+      properties:
+        hibernate:
+          //show_sql: true	=> sql을 system.out을 통해서 남긴다. 아래 logging 설정을 했기때문에 비활성화
+          format_sql: true
+
+  logging:
+    level:
+      org.hibernate.SQL: debug 	=> JPA와 하이버네이트가 생성하는 모든 sql을 로그로 남긴다.
+      org.hibernate.type: trace  => 쿼리 파라미터 로그 남기기  (implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6' 라이브러리 추가한다.)
+                                 => 운영단계에서는 꼭 성능테스트를 해보고 사용할 것
