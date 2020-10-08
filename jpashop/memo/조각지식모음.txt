@@ -30,3 +30,10 @@
         implementation 'org.springframework.boot:spring-boot-devtools'
     지원하지 않는 라이브러리
         implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
+
+
+관계형 데이터베이스의 다대다 관계
+- 일반적으로 다대다 관계는 불가능하다. 중간에 맵핑테이블을 만들어서 1대다, 다대1 관계로 풀어야 한다.
+
+
+기존 Date 사용시 어노테이션을 해줘야 하지만 자바8 이후부터는 LocalDateTime을 사용시 JPA가 알아서 처리해준다.

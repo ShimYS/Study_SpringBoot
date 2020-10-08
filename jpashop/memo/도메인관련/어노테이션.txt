@@ -1,0 +1,106 @@
+@Entity
+@Getter
+@Setter
+@Id
+- pk지정
+
+@GeneratedValue
+- pk값 자동생성
+
+@Column(name = "")
+- 테이블에서 컬럼이름 설정
+
+@Embeddable
+- @Embeddable 어노테이션을 지정한 클래스를 벨류 클래스라고 한다. 밸류클래스란 int, double 처럼 하나의
+값을 나타내는 클래스를 말한다. 보통 주소(address)라는 값을 저장하기 위해서는 아래와 같이 String 변수에
+저장하여 관리할 것이다.
+String address = "서울특별시 성북구 성북동 111-11번지 일동아파트 111동 1111호";
+
+하지만 주소 역시 값을 분리하여 저장하는 경우도 많다. address1, address2, zipcode가 합쳐져야 하나의 정확한
+의미를 나타내는데 변수를 분리하여 관리하기 때문에 불편한 점이 있다. 이러한 경우 '벨류 클래스'를
+사용하여 값이 가지는 의미를 강화할 수 있다.
+String address1 = "서울특별시 성북구 성북동";
+String address2 = "일동아파트 111동 1111호";
+String zipCode = "111-11번지";
+
+- 밸류 클래스는 여러개의 값(address1, address2, zipcode)을 가지지만 개념적으로 하나의 값(주소)를 표현한다.
+또한 다른 밸류 객체와 식별하기 위한 식별자를 가지지 않는 것이 특징이다. 
+create table hotel (
+  id, 
+  name,
+  grade,
+  zipcode,
+  address1,
+  address2
+)
+
+호텔 엔티티
+@Entity
+public class Hotel {
+  @Id
+  private String id;
+  private String name;
+  @Enumberated(EnumType.STRING)
+  private Grade grade;
+  @Embedded
+  private Address address;
+}
+
+주소 벨류클래스
+@Embeddable
+Class Address (
+  String address1;
+  String address2;
+  String zipCode;
+)
+
+
+@OneToMany
+- 1 대 다수 관계
+
+@ManyToOne
+- 다수 대 1 관계
+
+@OneToOne
+- 1 대 1 관계
+- 1 대 1 관계에서는 fk쪽에 연관관계 주인을 설정한다.
+ 예시) order와 delivery가 1 대 1 관계라면 order쪽에 delivery_id(fk)를 설정하고 @JoinColumn을 해준다.
+        delivery쪽에서는 mappedBy를 해준다.
+
+@ManyToMany
+- 다수 대 다수 관계
+- 다대다인 경우 중간 테이블이 필요하기 때문에 @JoinTable을 해준다.
+- 실무에서는 사용하지 말것!!
+
+@JoinTable(name = "", 
+	joinColumns = @JoinColumn(name = ""),
+	inverseJoinColumn = @JoinColumn(name = ""))
+- 테이블 생성. (다수 대 다수 관계의 경우 1 대 다수, 다수 대 1로 풀어내는 테이블이 필요하다)
+- 한쪽 테이블에 JoinTable을 만들고 fk를 양방향으로 등록한다.  
+ -->> 마주보는 쪽에서는 mappedBy(반대방향컬럼을 등록)만 해준다.
+
+@JoinCoulumn(name = "")
+- fk에서 사용
+- 조인 컬럼 설정
+- 연관관계 주인   -->>   마주보는 쪽에서는 mappedBy를 설정해줘여 한다.
+
+@Inheritance(strategy = "")
+- 추상클래스에 사용 
+- 상속관계의 테이블을 어떤식으로 할지 결정
+ SINGLE_TABLE
+ TABLE_PER_CLASS
+ JOINED
+
+@DiscriminatorColumn(name = "dtype")
+- 추상클래스에 사용
+- 상속관계를 묻는다
+
+@DiscriminatorValue("")
+- 구현클래스에 사용
+- 상속관계 식별
+
+@Enumerated(EnumType.)
+- enum객체에 사용
+- EnumType은 2가지가 있다.
+ EnumType.ORDINAL => 숫자로 구분, 상태추가시 숫자가 바뀔수 있음. 사용권장 x
+ EnumType.STRING => 문자열로 구분. 사용권장
