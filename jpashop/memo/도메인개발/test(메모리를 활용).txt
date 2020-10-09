@@ -1,0 +1,18 @@
+1. src - test - resources - application.yml 을 만든다.
+그러면 test 할때 test 폴더 하위에있는 application.yml이 우선으로 적용된다.
+
+2. datasource의 url을 in-Memory url로 바꾼다. (참조 : http://www.h2database.com/html/cheatSheet.html)
+url: jdbc:h2:mem:test
+
+3. 테스트를 하면 메모리모드에서 작동하게 된다.
+
+
+그런데!!!!!!!!!!!!!!!!!!!!!!!
+
+스프링부트에서는 데이터베이스 설정이 없으면 default로 메모리 모드로 동작을 한다. 따라서 데이터베이스 
+세팅을 지우고 테스트를 돌려도 정상적으로 메모리 위에서 동작한다.
+
+
+어쨋든!!!!!!!!!!!!!!!!!!!!!!!
+
+운영할때의 설정과 테스트 할때의 설정을 분리하는게 맞다! application.yml을 main과 test에 따로 만들어 주자!!
