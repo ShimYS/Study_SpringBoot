@@ -1,0 +1,3 @@
+기본적으로 테스트에서 Transactional은 rollback을 한다. (쿼리를 안날림)
+쿼리를 보고싶으면 EntityManager를 주입받아서 em.flush()를 하면 테스트 할때 db에로
+어떤 쿼리를 보냈는지 볼 수 있다. (물론 Transactional로 인해서 rollback 된다)

@@ -1,0 +1,18 @@
+** EntityManager em일때,
+- 저장
+em.persist(객체)
+
+- 하나 찾기
+em.find(클래서, pk)
+
+- 모두 찾기
+em.createQuery("jpql작성", 클래스).getResultList();
+
+- 이름으로 찾기
+em.createQuery("jpql작성", 클래스).setParameter("파라미터이름", 파라미터).getResultList();
+
+
+
+** SQL vs JPQL
+SQL은 테이블을 대상으로 쿼리를 날린다.
+JPQL은 엔티티를 대상으로 쿼리를 날린다.

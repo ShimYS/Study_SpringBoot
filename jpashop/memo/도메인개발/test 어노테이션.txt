@@ -1,0 +1,6 @@
+@RunWith(SpringRunner.class) - Juit 실행할때 스프링과 같이 역어서 실행할래!! 라는 뜻
+@SpringBootTest - 스프링부트를 띄운상태로 테스트 하기 위함
+@Transactional - 테스트후 롤백을 하기때문에 반복테스트가 가능하다.
+@Autowired
+@Test
+@Test(expected = IllegalStateException.class) - 중복 체크와 같은 테스트시 예외가 발생되면 잡아주는 역할. (즉, try catch 코드를 작성할 필요 없음)

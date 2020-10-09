@@ -1,0 +1,8 @@
+@Service
+@Autowired - 필드 인젝션
+
+@Transactional - 쓰기
+@Transactional(readOnly = true) - 조회 메소드에 사용할 것
+
+@ALLArgsConstructor - 필드의 생성자를 만들어 준다. (롬복)
+@RequiredArgsConstrutor - final 필드만 생성자를 만들어 준다.
