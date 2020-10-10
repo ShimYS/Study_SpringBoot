@@ -8,3 +8,34 @@ MemberService에서 중복 검사를 하더라도 동시에 똑같은 이름으�
 필드는 final로 하는걸 권장. 컴파일 시점에 체크를 할 수 있기때문에.
 
 ** 생성자가 하나만 있는경우 @Autowired가 없어도 된다.
+
+** Cascate
+            order를 db에 저장하기전에 delivery, orderItem을 먼저 저장해야하는데,
+            Order 엔티티에서 미리 delivery와 orderItem을 CascateType.ALL해주었기 때문에
+            order만 persist해줘도 자동으로 delivery, orderItem도 persist된다.
+
+            만약 delivety와 orderItem을 다른 엔티티에서 가져다 사용하는거라면 Cascate
+            사용을 자제하는게 좋다.
+            즉, 다른곳에서 참조하지 않고 라이프사이클 자체를 주 엔티티에서 persist할때 필요하면
+            사용해야한다.
+       
+public Long order(Long memberId, Long itemId, int count) {
+        // 엔티티 조회
+        Member member = memberRepository.findOne(memberId);
+        Item item = itemRepository.findOne(itemId);
+
+        // 배송정보 생성
+        Delivery delivery = new Delivery();
+        delivery.setAddress(member.getAddress());
+
+        // 주문상품 생성
+        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
+
+        // 주문 생성
+        Order order = Order.createOrder(member, delivery, orderItem);
+
+        // 주문 저장
+        orderRepository.save(order);
+
+        return order.getId();
+    }
