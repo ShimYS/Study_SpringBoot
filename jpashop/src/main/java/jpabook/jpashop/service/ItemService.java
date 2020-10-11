@@ -26,7 +26,6 @@ public class ItemService {
     }
 
     /**
-     * @@학습용@@
      * 상품 수정 (변경 감지 기능 사용)
      * @param itemId
      */

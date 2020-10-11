@@ -26,16 +26,16 @@ public class OrderRepository {
 
 
     /* 검색조건이 2개 모두 null이 아니라는 가정에서 나온 쿼리 => 동적쿼리가 아님 */
-//    public List<Order> findAll(OrderSeach orderSeach) {
-//        return em.createQuery("select o from Order o join o.member m" +
-//                " where o.status = :status " +
-//                " and m.name like :name", Order.class)
-//                .setParameter("status", orderSeach.getOrderStatus())
-//                .setParameter("name", orderSeach.getMamberName())
-//                //.setFirstResult(100) // 100번째부터 검색 (페이징처리시 사용할 수 있다)
-//                .setMaxResults(1000)    // 최대 1000건 검색
-//                .getResultList();
-//    }
+    public List<Order> findAll(OrderSearch orderSearch) {
+        return em.createQuery("select o from Order o join o.member m" +
+                " where o.status = :status " +
+                " and m.name like :name", Order.class)
+                .setParameter("status", orderSearch.getOrderStatus())
+                .setParameter("name", orderSearch.getMemberName())
+                //.setFirstResult(100) // 100번째부터 검색 (페이징처리시 사용할 수 있다)
+                .setMaxResults(1000)    // 최대 1000건 검색
+                .getResultList();
+    }
 
     /* JPA Criteria (JPA 표준 스펙) */
     // 표준스펙이긴 하나 유지보수성, 가독성이 너무 안좋아서 실무에서 사용하지 않는다.
