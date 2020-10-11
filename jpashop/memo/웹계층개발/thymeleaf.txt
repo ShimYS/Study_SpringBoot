@@ -1,0 +1,1 @@
+input태그 속성에 th:field="*{city}"를 해주면 id="city", name="city"가 자동으로 만들어 진다.
