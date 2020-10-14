@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
 
     @GetMapping("hello")
-    public String hello(Model model){
+    public String hello(Model model) {
         model.addAttribute("data", "hello!!");
         return "hello";
     }
 
     @GetMapping("hello-mvc")
-    public String helloMvc(@RequestParam(name="name", required = true) String name, Model model) {
+    public String helloMvc(@RequestParam(name = "name", required = true) String name, Model model) {
         model.addAttribute("name", name);
         return "hello-template";
     }
@@ -38,9 +38,11 @@ public class HelloController {
     // 클래스 내부에 클래스를 선언할때 사용하는 방식
     static class Hello {
         private String name;
+
         public String getName() {
             return name;
         }
+
         public void setName(String name) {
             this.name = name;
         }

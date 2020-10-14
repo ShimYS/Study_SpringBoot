@@ -3,3 +3,7 @@ Settings - Compiler - Annotation Processors에서 Enable annotation processing�
 
 Terminal 설정(intellij내부 cmd를 git bash로 교체)
 Settings - Terminal - 경로를 "C:\Program Files\Git\bin\sh.exe" -login -i 로 바꾼다.
+
+Gradle설정
+Settings - build and run using을 ItelliJ IDEA로 바꾼다.
+	run tests using을 ItelliJ IDEA로 바꾼다.

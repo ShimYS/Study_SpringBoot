@@ -13,7 +13,8 @@ import javax.persistence.EntityManager;
 @SpringBootTest
 public class ItemUpdateTest {
 
-    @Autowired EntityManager em;
+    @Autowired
+    EntityManager em;
 
     @Test
     public void updateTest() throws Exception {

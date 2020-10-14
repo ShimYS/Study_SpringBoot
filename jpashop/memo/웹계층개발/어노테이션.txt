@@ -4,13 +4,21 @@
 @Slf4j => 로그 생성에 사용. Logger log = LoggerFactory.getLogger(getClass());와 같다
 	log.으로 사용하면 된다.
 
-@RequestMapping("")
+@RequestMapping("") => api resource를 버전별로 관리하기 위해 ""을 모든 리소스 주소에 적용되도록 처리한다.
 
 @PathVariable("") => path에 가변인자를 바인딩하는 용도
 
 @ModelAttribute("") => ??
 
 @RequestParam => input에서 넘어온 값을 파라미터로 받을 때 사용
+
+@ResponseBody => 결과를 응답에 그대로 출력한다는 의미이다. return에 view경로대신 반환할 객체를 넣어준다.
+
+
+@RequiredArgsConstructor => class상단에 선언하면 class내부에 final로 선언된 객체에 대해서 Construtor Injection을 수행한다. 
+			해당 어노테이션을 사용하지 않고 선언된 객체에 @Autowired를 사용해도 된다.
+
+
 
 - Form Object
 @NotEmpty(message = "") => 필수로 입력받아야 할 필드에 사용한다.

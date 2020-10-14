@@ -23,3 +23,16 @@
       org.hibernate.SQL: debug 	=> JPA와 하이버네이트가 생성하는 모든 sql을 로그로 남긴다.
       org.hibernate.type: trace  => 쿼리 파라미터 로그 남기기  (implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6' 라이브러리 추가한다.)
                                  => 운영단계에서는 꼭 성능테스트를 해보고 사용할 것
+
+
+
+
+***
+jpa:
+ hibernate:
+   ddl-auto: 
+	  create 	 	(서버 시작할 떄 모든 테이블을 생성한다.)
+	  create-drop 	(서버 시작할 때 테이블을 생성하고 종료할 때 생성된 테이블을 삭제한다.)
+	  update	 	(서버 시작 시 Entity와 Table을 비교하여 변경된 내용을 반영한다. Table이 없으면 새롭게 생성.)
+	  validable 	(서버 시작 시 Entity와 실제 Table을 비교하여 다르면 시작하지 않고 종료한다.)
+	  none 		(아무런 처리를 하지 않는다.)

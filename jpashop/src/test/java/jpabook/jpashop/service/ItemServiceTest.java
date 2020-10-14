@@ -20,10 +20,13 @@ import static org.junit.Assert.*;
 @Transactional
 public class ItemServiceTest {
 
-    @Autowired ItemRepository itemRepository;
-    @Autowired ItemService itemService;
-    @Autowired EntityManager em;
-    
+    @Autowired
+    ItemRepository itemRepository;
+    @Autowired
+    ItemService itemService;
+    @Autowired
+    EntityManager em;
+
     @Test
     public void 상품_등록() throws Exception {
         //given
@@ -31,12 +34,12 @@ public class ItemServiceTest {
 
         //when
         itemService.saveItem(book);
-        
+
         // then
         em.flush();
         assertEquals(book, itemService.findOne(book.getId()));
     }
-    
+
     @Test
     public void 상품_수량_수정() throws Exception {
         //given

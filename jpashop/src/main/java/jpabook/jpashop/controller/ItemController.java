@@ -72,7 +72,7 @@ public class ItemController {
 //        book.setPrice(form.getPrice());
 //        book.setIsbn(form.getIsbn());
 //        itemService.saveItem(book);
-        
+
         // 변경 감지 방식
         itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
 

@@ -21,6 +21,7 @@ public class MemberService {
 
     /**
      * 회원가입
+     *
      * @param member 신규회원 정보
      * @return 신규회원 아이디
      */
@@ -40,6 +41,7 @@ public class MemberService {
 
     /**
      * 전체 회원 조회
+     *
      * @return 모든 회원 정보
      */
     public List<Member> findMembers() {
@@ -48,6 +50,7 @@ public class MemberService {
 
     /**
      * 개별 회원 조회
+     *
      * @param memberId 회원 아이디
      * @return 회원 정보
      */

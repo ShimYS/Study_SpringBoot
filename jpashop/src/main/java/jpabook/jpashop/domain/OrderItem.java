@@ -12,11 +12,13 @@ import javax.persistence.*;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "order_item_id")
     private Long id;
 
@@ -49,6 +51,7 @@ public class OrderItem {
     }
 
     //==비즈니스 로직==//
+
     /**
      * 주문 취소
      */
@@ -58,8 +61,10 @@ public class OrderItem {
     }
 
     //==조회 로직==//
+
     /**
      * 주문상품 전체 가격 조회
+     *
      * @return 전체 가격
      */
     public int getTotalPrice() {

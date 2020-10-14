@@ -19,8 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @Transactional
 class MemberServiceIntegrationTest {
 
-    @Autowired MemberService memberService;
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    MemberService memberService;
+    @Autowired
+    MemberRepository memberRepository;
 
     @Test
     void join() {
@@ -57,6 +59,6 @@ class MemberServiceIntegrationTest {
 //            assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 //         }
 
-         // then
+        // then
     }
 }

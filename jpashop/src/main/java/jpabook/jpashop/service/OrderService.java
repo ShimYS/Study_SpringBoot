@@ -27,6 +27,7 @@ public class OrderService {
 
     /**
      * 주문
+     *
      * @param memberId
      * @param itemId
      * @param count
@@ -66,6 +67,7 @@ public class OrderService {
 
     /**
      * 주문 취소
+     *
      * @param orderId
      */
     @Transactional
@@ -75,7 +77,7 @@ public class OrderService {
         // 주문 취소
         order.cancel();
     }
-    
+
     // 검색
     public List<Order> findOrders(OrderSearch orderSearch) {
         return orderRepository.findAll(orderSearch);

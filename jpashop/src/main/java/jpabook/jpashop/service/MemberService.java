@@ -14,11 +14,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
-//    @Autowired
+    //    @Autowired
     private final MemberRepository memberRepository;
 
     /**
      * 회원 가입
+     *
      * @param member
      * @return 가입한 회원 ID
      */
@@ -32,13 +33,14 @@ public class MemberService {
 
     private void validateDuplicateMember(Member member) {
         List<Member> findMembers = memberRepository.findByName(member.getName());
-        if(!findMembers.isEmpty()) {
+        if (!findMembers.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
 
     /**
      * 회원 전체 조회
+     *
      * @return 전체 회원 리스트
      */
     public List<Member> findMembers() {
@@ -47,6 +49,7 @@ public class MemberService {
 
     /**
      * 특정 회원 찾기
+     *
      * @param memberId 회원 ID
      * @return 조회된 회원
      */

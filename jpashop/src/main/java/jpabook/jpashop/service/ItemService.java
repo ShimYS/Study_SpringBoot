@@ -18,15 +18,17 @@ public class ItemService {
 
     /**
      * 상품 저장
+     *
      * @param item 저장할 상품
      */
     @Transactional
-    public void saveItem(Item item){
+    public void saveItem(Item item) {
         itemRepository.save(item);
     }
 
     /**
      * 상품 수정 (변경 감지 기능 사용)
+     *
      * @param itemId
      */
     @Transactional
@@ -44,6 +46,7 @@ public class ItemService {
 
     /**
      * 전체 상품 조회
+     *
      * @return 전체 상품 리스트
      */
     public List<Item> findItems() {
@@ -52,6 +55,7 @@ public class ItemService {
 
     /**
      * 특정 상품 조회
+     *
      * @param itemId 조회할 상품의 아이디
      * @return 조회된 상품
      */
