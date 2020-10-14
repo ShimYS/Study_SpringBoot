@@ -1,4 +1,6 @@
 # Study_SpringBoot
 
-**hello-spring** : IntelliJ, SpringBoot, Gradle, Thymeleaf, JPA, Tomcat<br>
-**jpashop** : IntelliJ, SpringBoot, Gradle, Thymeleaf, JPA, Hibernate, Tomcat
+**Base** : IntelliJ, SpringBoot, Gradle, Thymeleaf, Tomcat<br>
+**hello-spring** : JPA<br>
+**jpashop** :  JPA, Hibernate<br>
+**security** : Security<br>
