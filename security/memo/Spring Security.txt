@@ -1,0 +1,16 @@
+핵심
+userDetails, passwordEncoder
+
+인증이 필요한 페이지로 접근
+1. authenticated()되어있는 페이지로 접근하면
+2. security context라는 저장소에서 authentication이라는 객체가 있는지 찾는다.
+3. 없으면 login페이지로 이동한다.
+
+로그인
+1. 입력한 user name으로 userDetails(인터페이스)라는 객체를 읽어온다. 
+	//각각의 웹사이트마다 username, user, account, id 등등 다르기 떄문에 userDetails로 내가 사용하는 user domain을 변환한다.
+2. 입력한 password와 읽어온 객체의 password를 비교한다.
+3. 맞으면 security context에다가 authentication을 넣어주고, 접근하려고 했던 url로 보내준다.
+
+
+패스워드
